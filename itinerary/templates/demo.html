@@ -1,0 +1,869 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voyage Verse</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 1000px;
+    margin: 40px auto;
+    color: #fff;
+}
+
+.search-bar h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.search-bar form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.search-bar input[list] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.search-bar button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #00C1D4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-bar input[type="text"],
+.search-bar input[type="date"],
+.search-bar input[type="number"],
+.search-bar select {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+.search-bar .form-group h3 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.search-bar button {
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #00C1D4;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    align-self: center;
+}
+
+.search-bar button:hover {
+    background-color: #00a0b2;
+}
+/* Fullscreen canvas for particles */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Spotlight effect */
+#spotlight {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 60%);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+.generated-output {
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for readability */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around the section */
+    font-family: 'Arial', sans-serif; /* Cleaner font */
+    color: #333; /* Dark text for contrast */
+    /* width: 45%; */
+}
+
+.generated-output h3 {
+    font-size: 24px;
+    color: #2c3e50; /* Darker shade for the title */
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.generated-output pre {
+    font-size: 16px;
+    color: #555; /* Lighter shade for text */
+    background-color: #f1f1f1; /* Slightly different background for code */
+    padding: 15px;
+    border-radius: 8px;
+    white-space: pre-wrap; /* Ensures long lines wrap inside */
+    word-wrap: break-word; /* Prevents overflow */
+}
+
+button {
+    display: inline-block;
+    background-color: #3498db; /* Blue button background */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker shade on hover */
+    transform: translateY(-2px); /* Slight upward movement on hover */
+}
+
+button:active {
+    transform: translateY(0); /* Reset movement when button is pressed */
+}
+
+button:focus {
+    outline: none; /* Remove outline when button is focused */
+}
+
+button#whatsapp-share-button {
+    background-color: #25d366; /* WhatsApp Green */
+    margin-left: 80px; /* Slight space between buttons */
+    align-items: center;
+}
+button#whatsapp-share-button i {
+    margin-right: 8px; /* Adds space between the icon and text */
+    font-size: 18px; /* Size of the WhatsApp icon */
+}
+button#whatsapp-share-button:hover {
+    background-color: #128c7e; /* Darker WhatsApp Green on hover */
+}
+
+button#download-button {
+    background-color:rgba(27, 39, 53, 0.8); /* Green for download */
+}
+
+button#download-button:hover {
+    background-color: #3498db; /* Brighter green on hover */
+}
+</style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    <div id="spotlight"></div>
+
+    <header class="main-header">
+        <h1>Voyage Verse</h1>
+        <nav>
+            <a href="{% url 'home' %}#home">Home</a>
+            <a href="{% url 'home' %}#about">About</a>
+            <a href="{% url 'home' %}#contact">Contact</a>
+        </nav>
+        <!-- <div class="nav-icons">
+            <i class="icon-bell"></i>
+            <div class="profile-container">
+                <img src="default-profile.jpg" alt="User" class="profile-pic" id="profile-pic">
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <div class="profile-summary">
+                        <img src="default-profile.jpg" alt="User" class="profile-pic-large" id="profile-summary-pic">
+                        <p>Name: <strong></strong></p>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li id="show-profile"><a href="#"><i class="icon-eye"></i> Show Profile</a></li>
+                        <li><a href="#" id="settings-icon"><i class="icon-settings"></i> Settings</a></li>
+                        <li><a href="logout.php"><i class="icon-signout"></i> Sign out</a></li>
+                    </ul>
+                    <div id="profile-details" style="display: none;">
+                        <div class="profile-info">
+                            <button id="close-profile" class="close-btn">&times;</button>
+                            <img src="default-profile.jpg" alt="User" class="profile-pic-large" id="profile-details-pic">
+                            <div class="user-details">
+                                <p>Name: <strong></strong></p>
+                                <p>Email: <strong></strong></p>
+                                <p>Phone: <strong></strong></p>
+                            </div>
+                        </div>
+                        <label for="upload-photo" class="upload-btn">Upload Photo</label>
+                        <input type="file" id="upload-photo" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </header>
+    <div class="search-bar">
+        <form method="post" id="search-form">
+            {% csrf_token %}
+            <div class="form-group">
+            <h3>Destination Name</h3>
+                <input type="text" id="destination" id name="destination" required>
+                <!-- <select id="destination" name="destination" required onchange="showSelectedDistrict()">
+                    <option value="" disabled selected>Select a district</option>
+                </select> -->
+            </div>
+            <div class="form-group">
+            <h3>Number of Days:</h3>
+            <input type="number" id="days" name="days" min="1" required>
+            </div>
+            <div class="form-group">
+            <h3>Budget</h3>
+            <select id="budget" name="budget" required>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="luxury">Luxury</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <h3>Preferred Places (if any):</h3>
+            <input type="text" id="preferred_places" name="preferred_places" placeholder="e.g., famous landmark, beach">
+            </div>
+            <div class="form-group">
+            <h3>Dietary Preferences:</h3>
+            <select id="dietary_preference" name="dietary_preference" required>
+                <option value="veg">Vegetarian</option>
+                <option value="nonveg">Non-Vegetarian</option>
+                <option value="both">Both</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <h3>Number of Persons:</h3>
+            <input type="number" id="number_of_persons" name="number_of_persons" min="1" required>
+            </div>
+
+            <div class="form-group">
+            <h3>Travel Types:</h3>
+            <select id="travel_types" name="travel_types" multiple required>
+                <option value="Adventure">Adventure</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Nature">Nature</option>
+                <option value="Religious">Religious</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Heritage">Heritage</option>
+                <option value="Relaxation">Relaxation</option>
+                <option value="Wildlife">Wildlife</option>
+                <option value="Photography">Photography</option>
+                <option value="Food & Culinary">Food & Culinary</option>
+                <option value="Architecture">Architecture</option>
+                <option value="Historical">Historical</option>
+                <option value="Beach">Beach</option>
+                <option value="Mountain">Mountain</option>
+                <option value="Wellness">Wellness</option>
+                <option value="Educational">Educational</option>
+                <option value="Festivals">Festivals</option>
+                <option value="Nightlife">Nightlife</option>
+                <option value="Sports">Sports</option>
+                <option value="Local Experience">Local Experience</option>
+            </select>
+            <p style="font-size: 0.9em;">(Hold Ctrl/Cmd to select multiple options)</p>
+            </div>
+            <button type="submit">Generate Itinerary</button>
+        </form>
+    </div>
+
+    
+    <div id="model-output" class="generated-output">
+        {% if itinerary %}
+        <h3>Itinerary for {{ itinerary.destination }}</h3>
+        <pre id="itinerary-details">{{ itinerary.details }}</pre>
+        
+        <!-- Download Button -->
+        <button id="download-button" onclick="downloadItinerary()">Download Itinerary</button>
+    
+        <!-- WhatsApp Share Button -->
+        <button id="whatsapp-share-button" onclick="shareItineraryOnWhatsApp()">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+        </button>
+        {% endif %}
+    
+        {% if error %}
+        <p style="color:red;">Error: {{ error }}</p>
+        {% endif %}
+    </div>
+    
+
+    <div class="why-choose-us">
+        <h2>Why choose us?</h2>
+        <div class="features-container">
+            <div class="feature">
+                <h3>Personalized Itineraries</h3>
+                <p>Receive tailored itineraries that align with your preferences, budget, and travel style, ensuring a unique and enjoyable experience.</p>
+            </div>
+            <div class="feature">
+                <h3>Budget-Friendly Planning</h3>
+                <p>Whether you're saving or splurging, Voyage Verse adjusts recommendations to fit your financial plan, making travel accessible and stress-free.</p>
+            </div>
+            <div class="feature">
+                <h3>Interactive Maps</h3>
+                <p>Visualize your entire journey with Leaflet-integrated maps, guiding you through the best routes, attractions, and dining spots.</p>
+            </div>
+            <div class="feature">
+                <h3>Expert Travel Tips</h3>
+                <p>Benefit from curated travel tips and advice, ensuring you make the most of your destination, discovering hidden gems and must-see spots.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="information">Top Six Destinations</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="{% static 'video/amritsar.jpg' %}">
+                    <div class="layer">
+                        <h2><strong>Amristar</strong></h2>
+                        <a href="{% url 'amristar' %}"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="{% static 'video/andhaman.jpg' %}">
+                    <div class="layer">
+                        <h2><strong>Andhaman Islands</strong></h2>
+                        <a href="{% url 'andamanislands' %}"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="{% static 'video/agra.jpg' %}">
+                    <div class="layer">
+                        <h2><strong>Agra</strong></h2>
+                        <a href="{% url 'agra' %}"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="{% static 'video/goa.jpg' %}">
+                    <div class="layer">
+                        <h2><strong>Goa</strong></h2>
+                        <a href="{% url 'goa' %}"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="{% static 'video/pondicherry.jpg' %}">
+                    <div class="layer">
+                        <h2><strong>Pondicherry</strong></h2>
+                        <a href="{% url 'pondicherry' %}"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="{% static 'video/kullu.jpg' %}">
+                    <div class="layer">
+                        <h2><strong>Kullu</strong></h2>
+                        <a href="{% url 'kullu' %}"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+    <section class="testimonials">
+        <h2>What They're Saying</h2>
+        <p>Rated 4.8 out of 5 at TrustPilot</p>
+        
+        <div class="testimonial-row">
+            <div class="testimonial-card">
+                <div class="rating">
+                    <span>Edson</span>
+                    <span>5.0 ★★★★★</span>
+                </div>
+                <p class="review-text">"Voyage Verse turned my dream trip to Bali into a reality. Their personalized itinerary suggestions and insider tips made my experience unforgettable.
+                     I felt like a local, exploring hidden gems and experiencing authentic Balinese culture. Highly recommended!"</p>
+                <p class="reviewer">OCT 01, 2024</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="rating">
+                    <span>Amer Garibović</span>
+                    <span>5.0 ★★★★★</span>
+                </div>
+                <p class="review-text">"I was initially overwhelmed by the options for my family trip to Europe. Voyage Verse simplified the process, providing tailored recommendations based on our interests and budget. The customer support was exceptional, 
+                    always available to answer our questions and provide guidance. Our trip was a huge success!"                </p>
+                <p class="reviewer">OCT 02, 2024</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="rating">
+                    <span>Waqas Ahmed</span>
+                    <span>5.0 ★★★★★</span>
+                </div>
+                <p class="review-text">"I've used Voyage Verse for multiple trips now, and I'm always impressed. Their curated selection of unique experiences and accommodations makes each journey special.
+                     The website is easy to navigate, and the booking process is seamless. I'll definitely be using them again for my next adventure!"</p>
+                <p class="reviewer">OCT 05, 2024</p>
+            </div>
+        </div>
+    </section>
+
+<!-- Chat bot button with GIF -->
+<button id="chatbot-button" class="chatbot-icon">
+    <img src="{% static 'video/thinking.gif' %}" alt="Chatbot Icon" class="chatbot-gif">
+</button>
+
+<div class="chatbot-container">
+        <h2 class="chatbot-title">Travel Chatbot</h2>
+        <div class="chatbot-interface">
+            <div class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" class="chatbot-input-field" placeholder="Ask me anything about your trip!" />
+                <button class="chatbot-send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; Voyage Verse - 2024</p>
+    </footer>
+    <style>
+        .chatbot-container {
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.chatbot-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+
+}
+
+.chatbot-interface {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+.chatbot-messages {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    color: #000;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #000000;
+}
+
+.chatbot-input-field {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+
+.chatbot-send-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #000000;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+/* Additional styles for chatbot visibility toggle */
+.chatbot-container {
+        display: none; /* Initially hidden */
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+    .bot-avatar {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    margin-right: 8px; /* Space between avatar and message */
+    vertical-align: middle;
+}
+.chat-message--chatbot {
+    display: flex;
+    align-items: center;
+}
+.chat-message--user span:first-child {
+    color: #007bff;
+}
+.bot-avatar {
+    width: 30px; /* Adjust size as needed */
+    height: 30px;
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 8px;
+    object-fit: cover; /* Ensures the image fits well within the circle */
+    background-color: transparent; /* Ensures any background color won't show */
+}
+    </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const chatbotButton = document.getElementById('chatbot-button');
+    const chatbotContainer = document.querySelector('.chatbot-container');
+    const chatbotInputField = document.querySelector('.chatbot-input-field');
+    const chatbotSendButton = document.querySelector('.chatbot-send-button');
+    const chatbotMessages = document.querySelector('.chatbot-messages');
+    let isFirstOpen = true;  // Track if it's the first time opening
+
+    // Toggle chatbot container visibility on button click
+    chatbotButton.addEventListener('click', function() {
+        if (chatbotContainer.style.display === 'none') {
+            chatbotContainer.style.display = 'block';
+            chatbotContainer.scrollIntoView({ behavior: 'smooth' }); // Scroll to chatbot container
+            
+            // Send welcome message on first open
+            if (isFirstOpen) {
+                addChatMessage('chatbot', 'Hello! Welcome to Voyage Verse! How can I help you plan your trip today?');
+                isFirstOpen = false;  // Set to false so the welcome message doesn't appear again
+            }
+        } else {
+            chatbotContainer.style.display = 'none';
+        }
+    });
+
+    chatbotSendButton.addEventListener('click', function() {
+        const userInput = chatbotInputField.value.trim();
+        if (userInput) {
+            sendChatbotRequest(userInput);
+            chatbotInputField.value = '';
+        }
+    });
+
+    chatbotInputField.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            chatbotSendButton.click();
+        }
+    });
+
+    function sendChatbotRequest(userInput) {
+        fetch('/chat_response/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ user_input: userInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const chatbotResponse = data.chatbot_response;
+            addChatMessage('user', userInput);
+            addChatMessage('chatbot', chatbotResponse);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            addChatMessage('chatbot', 'Sorry, there was an error processing your request.');
+        });
+    }
+
+    function addChatMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message', `chat-message--${sender}`);
+
+        if (sender === 'user') {
+            // Label for the user's message
+            const userLabel = document.createElement('span');
+            userLabel.textContent = 'YOU: ';
+            userLabel.style.fontWeight = 'bold';
+            messageElement.appendChild(userLabel);
+
+            // User message content
+            const messageContent = document.createElement('span');
+            messageContent.textContent = message;
+            messageElement.appendChild(messageContent);
+
+        } else if (sender === 'chatbot') {
+            // Avatar for the bot message
+            const botAvatar = document.createElement('img');
+            botAvatar.src = '{% static "video/bot.png" %}';  // Path to the bot image
+            botAvatar.alt = 'Bot Avatar';
+            botAvatar.classList.add('bot-avatar'); // Add CSS class for styling
+            messageElement.appendChild(botAvatar);
+
+            // Bot message content
+            const messageContent = document.createElement('span');
+            messageContent.textContent = message;
+            messageElement.appendChild(messageContent);
+        }
+
+        chatbotMessages.appendChild(messageElement);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+});
+
+    </script>
+    <!---------------------------Script------------------->
+    <script>
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const chatButton = document.getElementById('chatbot-button');
+//     const chatInterface = document.getElementById('chat-interface');
+//     const userInput = document.getElementById('user-input');
+//     const chatMessages = document.getElementById('chat-messages');
+//     const sendButton = document.getElementById('send-button');
+
+//     // Check if chat button and chat interface exist
+//     if (!chatButton || !chatInterface) {
+//         console.error('Chatbot button or interface not found.');
+//         return;
+//     }
+
+//     // Chat button click event - toggle chat interface visibility
+//     chatButton.addEventListener('click', () => {
+//         if (chatInterface.style.display === 'none' || chatInterface.style.display === '') {
+//             chatInterface.style.display = 'block';
+//         } else {
+//             chatInterface.style.display = 'none';
+//         }
+//     });
+
+//     // Send button click event - send the user's message
+//     sendButton.addEventListener('click', sendMessage);
+
+//     // Enter key press event for input field
+//     userInput.addEventListener('keypress', function (event) {
+//         if (event.key === 'Enter') {
+//             sendMessage();
+//         }
+//     });
+
+//     // Function to send a message
+//     function sendMessage() {
+//         const message = userInput.value.trim();
+//         if (message) {
+//             addMessage('You', message);
+//             // Simulate an AI response
+//             setTimeout(() => {
+//                 addMessage('AI Guide', 'Thank you for your message. How can I assist you today?');
+//             }, 1000);
+//             userInput.value = ''; // Clear the input field after sending
+//         }
+//     }
+
+//     // Function to add a message to the chat
+//     function addMessage(sender, message) {
+//         const messageElement = document.createElement('div');
+//         messageElement.classList.add('message');
+
+//         if (sender === 'AI Guide') {
+//             // Replace the text with an image for AI Guide
+//             const img = document.createElement('img');
+//             img.src = "{% static 'video/videoframe_1458.png' %}"; // Path to your AI Guide image
+//             img.alt = 'AI Guide';
+//             img.classList.add('ai-guide-image'); // Add a class for styling (optional)
+//             messageElement.appendChild(img);
+//         } else {
+//             messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+//         }
+        
+//         chatMessages.appendChild(messageElement);
+//         chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+//     }
+
+//     // Initialize chat with a welcome message
+//     addMessage('AI Guide', 'Hello! How can I help you today?');
+// });
+
+
+document.getElementById('profile-pic').addEventListener('click', function() {
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const profileDetails = document.getElementById('profile-details');
+    const settingsMenu = document.getElementById('settings-menu');
+
+    if (dropdownMenu.style.display === 'block') {
+        dropdownMenu.style.display = 'none';
+        profileDetails.style.display = 'none';
+        settingsMenu.style.display = 'none';
+    } else {
+        dropdownMenu.style.display = 'block';
+    }
+});
+
+document.getElementById('show-profile').addEventListener('click', function(event) {
+    event.stopPropagation();
+    const profileDetails = document.getElementById('profile-details');
+    profileDetails.style.display = profileDetails.style.display === 'block' ? 'none' : 'block';
+});
+
+document.getElementById('close-profile').addEventListener('click', function() {
+    const profileDetails = document.getElementById('profile-details');
+    profileDetails.style.display = 'none';
+});
+
+document.getElementById('upload-photo').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profile-pic').src = e.target.result;
+            document.getElementById('profile-summary-pic').src = e.target.result;
+            document.getElementById('profile-details-pic').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+document.querySelector('#settings-icon').addEventListener('click', function() {
+    const settingsMenu = document.getElementById('settings-menu');
+    settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+});
+
+document.getElementById('close-settings').addEventListener('click', function() {
+    const settingsMenu = document.getElementById('settings-menu');
+    settingsMenu.style.display = 'none';
+});
+
+window.onclick = function(event) {
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const profileDetails = document.getElementById('profile-details');
+    const settingsMenu = document.getElementById('settings-menu');
+    
+    if (!event.target.matches('#profile-pic') && !event.target.closest('.dropdown-menu')) {
+        dropdownMenu.style.display = 'none';
+        profileDetails.style.display = 'none';
+        settingsMenu.style.display = 'none';
+    }
+};
+function downloadItinerary() {
+        // Get the itinerary content
+        const itineraryContent = document.getElementById('itinerary-details').innerText;
+
+        // Create a blob from the itinerary content
+        const blob = new Blob([itineraryContent], { type: 'text/plain' });
+
+        // Create a link element for the download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = 'Itinerary.txt';  // Default file name
+
+        // Programmatically click the link to trigger the download
+        downloadLink.click();
+
+        // Release the URL after download
+        URL.revokeObjectURL(downloadLink.href);
+    }
+    // Spotlight effect
+document.addEventListener("mousemove", function (event) {
+    const spotlight = document.getElementById("spotlight");
+    spotlight.style.left = event.pageX + "px";
+    spotlight.style.top = event.pageY + "px";
+});
+
+// Particle effect
+const canvas = document.getElementById("particles-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Resize canvas on window resize
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Particle class
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 4 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        // Bounce particles off edges
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+
+    draw() {
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+    }
+}
+
+// Array to hold particles
+const particlesArray = [];
+function initParticles() {
+    for (let i = 0; i < 100; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        particlesArray.push(new Particle(x, y));
+    }
+}
+initParticles();
+
+// Animate particles
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particlesArray.forEach((particle) => {
+        particle.update();
+        particle.draw();
+    });
+    requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+function shareItineraryOnWhatsApp() {
+    var itineraryText = document.getElementById("itinerary-details").innerText;
+    var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(itineraryText);
+    
+    // Open WhatsApp share link in a new window/tab
+    window.open(whatsappUrl, "_blank");
+}
+</script>
+</body>
+</html>
+
