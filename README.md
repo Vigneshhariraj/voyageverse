@@ -74,7 +74,7 @@ To get started with **Voyage Verse**:
 ## **Technologies Used**
 
 - **Backend**:  
-  ![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) Django framework powers the backend of the application.
+  ![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white) 
 
 - **Frontend**:  
   - ![HTML](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -82,7 +82,7 @@ To get started with **Voyage Verse**:
   - ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 
 - **AI & Language Models**:  
-  - ![Gemini](https://img.shields.io/badge/Gemini-%23336E7B.svg?style=for-the-badge&logo=google&logoColor=white) Gemini model for natural language generation.
+  - ![Gemini](https://img.shields.io/badge/Gemini-%23336E7B.svg?style=for-the-badge&logo=google&logoColor=white) 
 
 ---
 
