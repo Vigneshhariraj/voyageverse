@@ -111,6 +111,11 @@ To get started with **Voyage Verse**:
 The personalized itinerary is provided to users via a beautifully crafted. Here’s an example of what you can expect:
 ![image](https://github.com/user-attachments/assets/4a8ae21f-1893-4335-a018-6c3f48bf1a82)
 
+The personalized chatbot is provided to users via a beautifully crafted. Here’s an example of what you can expect:
+![image](https://github.com/user-attachments/assets/3f4473b1-41af-4dd8-bf70-71c315565e5b)
+
+
+
 
 
 ## Contact Us
