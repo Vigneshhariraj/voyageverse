@@ -6,13 +6,31 @@
 
 ---
 
-## **Key Features**
+# Key Features
 
-- **Timing Flexibility**:  
-  Allow users to adjust or customize the timing of their activities, ensuring plans are adaptable to real-time changes (like traffic or delays).
+- **Budget-Specific Suggestions**:  
+  Offers tailored recommendations for accommodations, dining, and attractions across various budget levels (Low, Medium, High, Luxury), allowing users to customize their experience according to financial preferences.
 
-- **User-Friendly Input Interface**:  
-  Make sure the input forms and options for users are simple and clear, enhancing the overall experience.
+- **Customizable Travel Types and Group Considerations**:  
+  Provides itinerary customization based on travel types (e.g., Adventure, Cultural, Wildlife) and group size, ensuring activities and accommodations are suited to individual travelers, small groups, or larger parties.
+
+- **Dietary Preferences and Accessibility**:  
+  Recommends dining options that cater to specific dietary needs (Vegetarian, Non-Vegetarian) and includes information on accessibility at venues to accommodate diverse preferences and requirements.
+
+- **Efficient Proximity-Based Itinerary Planning**:  
+  Ensures attractions are located within close range (typically within 10 km) to reduce travel time, increase efficiency, and maximize enjoyment. Suggestions are tailored by travel type and budget.
+
+- **Alternative and Flexible Scheduling**:  
+  Provides a detailed yet flexible schedule, with suggested morning, afternoon, and evening activities, along with optional alternative activities, allowing users to adjust timings and customize their itinerary based on availability and interest.
+
+- **Local Insights and Safety Tips**:  
+  Enhances the travel experience by offering insights into local customs, etiquette, and safety guidelines, helping travelers navigate new locations respectfully and safely.
+
+- **Transportation and Accommodation Recommendations**:  
+  Offers transportation suggestions between activities, with details on travel times, group transport options, and nearby accommodation suited to various budgets and locations.
+
+- **Interactive Map Integration and Custom Place Inputs**:  
+  Supports dynamic map visualization using Google Maps API and allows users to add specific places they wish to visit, leading to a personalized and visualized itinerary that’s easy to follow.
 
 - **Hotel Recommendations**:  
   Provide suggestions for accommodations, potentially offering options with various price ranges or proximity to planned activities.
@@ -22,9 +40,6 @@
 
 - **Pricing Range for Activities**:  
   Show pricing ranges for suggested activities, allowing users to select options that fit their budget.
-
-- **Map Integration**:  
-  Include dynamic maps that help visualize the planned itinerary, hotels, and activities for easier navigation.
 
 ---
 
