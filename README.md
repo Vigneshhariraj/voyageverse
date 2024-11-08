@@ -32,9 +32,6 @@
 - **Interactive Map Integration and Custom Place Inputs**:  
   Supports dynamic map visualization using Google Maps API and allows users to add specific places they wish to visit, leading to a personalized and visualized itinerary that’s easy to follow.
 
-- **Hotel Recommendations**:  
-  Provide suggestions for accommodations, potentially offering options with various price ranges or proximity to planned activities.
-
 - **Activity Suggestions with Delay Considerations**:  
   Offer alternative activity suggestions or adjust timings if a delay is expected, keeping travel smooth even with unforeseen changes.
 
