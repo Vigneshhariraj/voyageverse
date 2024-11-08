@@ -123,13 +123,8 @@ For Windows:
 ## **Output**
 
 The personalized itinerary is provided to users via a beautifully crafted. Here’s an example of what you can expect:
+![image](https://github.com/user-attachments/assets/4a8ae21f-1893-4335-a018-6c3f48bf1a82)
 
-![itinerary2](https://github.com/user-attachments/assets/8809bdb7-a42a-4680-9af1-d52036bed1e8)
-![itinerary3](https://github.com/user-attachments/assets/75e25462-ed48-4233-a028-fe909f11f74d)
-![itinerary4](https://github.com/user-attachments/assets/da55449c-ef46-470f-a296-8d30653d28bf)
-![itinerary5](https://github.com/user-attachments/assets/e26a50a4-43aa-46cc-91bb-99bf8831c71b)
-![itinerary6](https://github.com/user-attachments/assets/8cf31ac9-b394-4638-9ee5-24f6d870b262)
-![itinerary7](https://github.com/user-attachments/assets/62cc301b-79d2-4aac-a18e-7b044940e667)
 
 
 ## Contact Us
