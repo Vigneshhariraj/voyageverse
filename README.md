@@ -120,15 +120,15 @@ For any inquiries or feedback, please contact
 1. VIGNESH.L
    vigneshlakshmanababu@gmail.com,
    https://www.linkedin.com/in/vignesh19032005/
-
+<br>
 2. VIGNESH.H
    vigneshhariraj@gmail.com,
    https://www.linkedin.com/in/vigneshhariraj/
-
+<br>
 3.SHAILESH.A
-  shailesh.ashok2020@gmail.com
+  shailesh.ashok2020@gmail.com,
   https://www.linkedin.com/in/shailesh-ashokraj-bb2b28252/
-
+<br>
 
 https://www.linkedin.com/in/voyageverse/
 voyageverse.cerebrox@gmail.com
