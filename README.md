@@ -84,21 +84,7 @@ To get started with **Voyage Verse**:
     pip install -r requirements.txt
     ```
 
-4. Activating the virtual environment:
-
-
-For macOS/Linux:
-```
-source <path_to_virtual_environment>/bin/activate
-```
-
-For Windows:
-```
-<path_to_virtual_environment>\Scripts\activate
-```
-
-
-5. Run the application (Django):
+4. Run the application (Django):
     ```bash
     python manage.py runserver
     ```
