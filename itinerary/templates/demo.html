@@ -119,81 +119,111 @@
     transform: translate(-50%, -50%);
 }
 
-.generated-output {
-    align-items: center;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background for readability */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow around the section */
-    font-family: 'Arial', sans-serif; /* Cleaner font */
-    color: #333; /* Dark text for contrast */
-    /* width: 45%; */
-}
+.model-output {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
 
-.generated-output h3 {
-    font-size: 24px;
-    color: #2c3e50; /* Darker shade for the title */
-    margin-bottom: 15px;
-    font-weight: bold;
-}
+        .left-section {
+            flex: 1;
+            padding: 20px;
+        }
 
-.generated-output pre {
-    font-size: 16px;
-    color: #555; /* Lighter shade for text */
-    background-color: #f1f1f1; /* Slightly different background for code */
-    padding: 15px;
-    border-radius: 8px;
-    white-space: pre-wrap; /* Ensures long lines wrap inside */
-    word-wrap: break-word; /* Prevents overflow */
-}
+        .right-section {
+            flex: 1;
+        }
 
-button {
-    display: inline-block;
-    background-color: #3498db; /* Blue button background */
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
-}
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-button:hover {
-    background-color: #2980b9; /* Darker shade on hover */
-    transform: translateY(-2px); /* Slight upward movement on hover */
-}
+        .left-section h3 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
 
-button:active {
-    transform: translateY(0); /* Reset movement when button is pressed */
-}
+        #itinerary-details {
+            font-size: 16px;
+            color: #555;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
 
-button:focus {
-    outline: none; /* Remove outline when button is focused */
-}
+        button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            color: white;
+        }
 
-button#whatsapp-share-button {
-    background-color: #25d366; /* WhatsApp Green */
-    margin-left: 80px; /* Slight space between buttons */
-    align-items: center;
-}
-button#whatsapp-share-button i {
-    margin-right: 8px; /* Adds space between the icon and text */
-    font-size: 18px; /* Size of the WhatsApp icon */
-}
-button#whatsapp-share-button:hover {
-    background-color: #128c7e; /* Darker WhatsApp Green on hover */
-}
+        button:hover {
+            transform: translateY(-2px);
+        }
 
-button#download-button {
-    background-color:rgba(27, 39, 53, 0.8); /* Green for download */
-}
+        button:active {
+            transform: translateY(0);
+        }
 
-button#download-button:hover {
-    background-color: #3498db; /* Brighter green on hover */
-}
+        button:focus {
+            outline: none;
+        }
+
+        #download-button {
+            background-color: rgba(27, 39, 53, 0.8);
+        }
+
+        #download-button:hover {
+            background-color: #3498db;
+        }
+
+        #whatsapp-share-button {
+            background-color: #25d366;
+            margin-left: 80px;
+        }
+
+        #whatsapp-share-button i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+
+        #whatsapp-share-button:hover {
+            background-color: #128c7e;
+        }
+
+        .error-message {
+            color: red;
+            padding: 10px;
+            background-color: #fee;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
 .chatbot-container {
     background-color: #f5f5f5;
     border-radius: 10px;
@@ -391,23 +421,30 @@ button#download-button:hover {
     </div>
 
     
-    <div id="model-output" class="generated-output">
-        {% if itinerary %}
-        <h3>Itinerary for {{ itinerary.destination }}</h3>
-        <pre id="itinerary-details">{{ itinerary.details }}</pre>
-        
-        <!-- Download Button -->
-        <button id="download-button" onclick="downloadItinerary()">Download Itinerary</button>
-    
-        <!-- WhatsApp Share Button -->
-        <button id="whatsapp-share-button" onclick="shareItineraryOnWhatsApp()">
-            <i class="fab fa-whatsapp"></i> Share on WhatsApp
-        </button>
-        {% endif %}
-    
-        {% if error %}
-        <p style="color:red;">Error: {{ error }}</p>
-        {% endif %}
+    <div class="model-output">
+        <div class="left-section">
+            {% if itinerary %}
+            <h3>Itinerary for {{ itinerary.destination }}</h3>
+            <pre id="itinerary-details">{{ itinerary.details }}</pre>
+            <button id="download-button" onclick="downloadItinerary()">
+                <i class="fas fa-download"></i> Download Itinerary
+            </button>
+            <button id="whatsapp-share-button" onclick="shareItineraryOnWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Share on WhatsApp
+            </button>
+            {% endif %}
+            {% if error %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i> Error: {{ error }}
+            </div>
+            {% endif %}
+        </div>
+        <div class="right-section">
+            <!-- Map Container -->
+            <div id="map" style="height: 500px; width: 100%; border-radius: 10px; margin-bottom: 20px;"></div>
+
+
+        </div>
     </div>
     
 
@@ -539,7 +576,75 @@ button#download-button:hover {
         <p>&copy; Voyage Verse - 2024</p>
     </footer>
     <!---------------------------Script------------------->
+    !-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="anonymous" />
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="anonymous"></script>
+    
+    <!-- Leaflet Control Geocoder -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    
+
     <script>
+        let map, marker, geocoder;
+    
+        // Initialize the map
+        function initMap() {
+            // Set up the map centered on India
+            map = L.map('map').setView([20.5937, 78.9629], 5);
+    
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            // Initialize the geocoder
+            geocoder = L.Control.Geocoder.nominatim();
+    
+            // Add a default marker (optional)
+            marker = L.marker([20.5937, 78.9629]).addTo(map)
+                .bindPopup('Default Location: India')
+                .openPopup();
+        }
+    
+        // Function to search for a location based on user input
+        function searchLocation() {
+            const destinationInput = document.getElementById('destination').value.trim();
+            if (destinationInput === '') {
+                alert('Please enter a destination.');
+                return;
+            }
+    
+            // Use the geocoder to find the location
+            geocoder.geocode(destinationInput, function(results) {
+                if (results && results.length > 0) {
+                    const result = results[0];
+                    const latlng = result.center;
+    
+                    // Center the map on the searched location
+                    map.setView(latlng, 12);
+    
+                    // Remove existing marker if any
+                    if (marker) {
+                        map.removeLayer(marker);
+                    }
+    
+                    // Add a new marker at the searched location
+                    marker = L.marker(latlng).addTo(map)
+                        .bindPopup(`Location: ${result.name}`)
+                        .openPopup();
+                } else {
+                    alert("Location not found. Please try a different input.");
+                }
+            });
+        }
+    
+        // Initialize the map when the page loads
+        window.addEventListener('load', initMap);
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const chatbotButton = document.getElementById('chatbot-button');
     const chatbotContainer = document.querySelector('.chatbot-container');
@@ -711,82 +816,15 @@ function downloadItinerary() {
         // Release the URL after download
         URL.revokeObjectURL(downloadLink.href);
     }
-    // Spotlight effect
-document.addEventListener("mousemove", function (event) {
-    const spotlight = document.getElementById("spotlight");
-    spotlight.style.left = event.pageX + "px";
-    spotlight.style.top = event.pageY + "px";
-});
 
-// Particle effect
-const canvas = document.getElementById("particles-canvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// Resize canvas on window resize
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-// Particle class
-class Particle {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.size = Math.random() * 4 + 1;
-        this.speedX = Math.random() * 3 - 1.5;
-        this.speedY = Math.random() * 3 - 1.5;
-    }
-
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        // Bounce particles off edges
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-    }
-
-    draw() {
-        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-    }
-}
-
-// Array to hold particles
-const particlesArray = [];
-function initParticles() {
-    for (let i = 0; i < 100; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        particlesArray.push(new Particle(x, y));
-    }
-}
-initParticles();
-
-// Animate particles
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particlesArray.forEach((particle) => {
-        particle.update();
-        particle.draw();
-    });
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
-
-function shareItineraryOnWhatsApp() {
+    function shareItineraryOnWhatsApp() {
     var itineraryText = document.getElementById("itinerary-details").innerText;
     var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(itineraryText);
     
     // Open WhatsApp share link in a new window/tab
     window.open(whatsappUrl, "_blank");
 }
+
 </script>
 </body>
 </html>
