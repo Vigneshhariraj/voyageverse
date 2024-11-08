@@ -1,4 +1,4 @@
-![signup](https://github.com/user-attachments/assets/26ad9d8e-de08-47f2-8b38-7121a4812c2c)# **Voyage Verse: Crafting Personalized Journeys beyond Imagination**
+# **Voyage Verse: Crafting Personalized Journeys beyond Imagination**
 
 ---
 
