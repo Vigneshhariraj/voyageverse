@@ -116,9 +116,17 @@ The personalized itinerary is provided to users via a beautifully crafted. Hereâ
 ## Contact Us
 
 For any inquiries or feedback, please contact 
-vigneshlakshmanababu@gmail.com, 
-vigneshhariraj@gmail.com, 
-shailesh.ashok2020@gmail.com
+
+1. VIGNESH.L
+   vigneshlakshmanababu@gmail.com,
+   https://www.linkedin.com/in/vignesh19032005/
+   
+3. VIGNESH.H
+   vigneshhariraj@gmail.com,
+   https://www.linkedin.com/in/vigneshhariraj/
+3.SHAILESH.A
+  shailesh.ashok2020@gmail.com
+  https://www.linkedin.com/in/shailesh-ashokraj-bb2b28252/
 
 
 https://www.linkedin.com/in/voyageverse/
