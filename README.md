@@ -1,4 +1,4 @@
-# **Voyage Verse: Crafting Personalized Journeys beyond Imagination**
+![signup](https://github.com/user-attachments/assets/26ad9d8e-de08-47f2-8b38-7121a4812c2c)# **Voyage Verse: Crafting Personalized Journeys beyond Imagination**
 
 ---
 
@@ -44,16 +44,25 @@
 
 - **Input**:  
 Users provide travel details such as destination, budget, and preferences. Voyage Verse uses this information, along with real-time data, to create the perfect travel itinerary.
-![Flowchart (4)](https://github.com/user-attachments/assets/08ed4ae9-0137-4d2a-a669-91a266f77388)
+![Flowchart_MAP](https://github.com/user-attachments/assets/3587e8e3-1c1f-4c44-bd34-566a049214a6)
 
 - **Home Page**:  
-  ![home](home.jpg)
+![home](https://github.com/user-attachments/assets/59ffb144-bdb7-428a-a7f8-7f1260fed471)
+
+- **Signup page**:  
+![signup](https://github.com/user-attachments/assets/443379d1-7288-45c1-8503-e4837fcd9453)
+
+
+- **Login Page**:  
+![login](https://github.com/user-attachments/assets/bf858a79-368b-4a95-a62e-6530747756af)
+
   
 - **Sample for Modal Input**:  
-  ![modal](modal.jpg)
+![input](https://github.com/user-attachments/assets/87b753a7-29b5-4a13-90f3-8282c67dc988)
+
 
 - **Top Destinations**:  
-  ![top](top.jpg)
+![top 6 destinations](https://github.com/user-attachments/assets/e264a8c5-869d-4d74-9e85-8ff93f276a87)
 
 ---
 
@@ -114,13 +123,14 @@ For Windows:
 
 ## **Output**
 
-The personalized itinerary is provided to users via a beautifully crafted, detailed PDF. Here’s an example of what you can expect:
-![WhatsApp Image 2024-10-05 at 10 44 47_e491d286](https://github.com/user-attachments/assets/a092a500-eea7-4381-b1c9-dfccd587fa1e)
+The personalized itinerary is provided to users via a beautifully crafted. Here’s an example of what you can expect:
 
-![Untitled design](https://github.com/user-attachments/assets/8318309e-9a4f-4a18-9712-fedfe437d0f5)
-
-![WhatsApp Image 2024-10-05 at 10 43 26_043ef1c9](https://github.com/user-attachments/assets/fcf08995-294c-4266-b114-cdcbaff30da5)
-
+![itinerary2](https://github.com/user-attachments/assets/8809bdb7-a42a-4680-9af1-d52036bed1e8)
+![itinerary3](https://github.com/user-attachments/assets/75e25462-ed48-4233-a028-fe909f11f74d)
+![itinerary4](https://github.com/user-attachments/assets/da55449c-ef46-470f-a296-8d30653d28bf)
+![itinerary5](https://github.com/user-attachments/assets/e26a50a4-43aa-46cc-91bb-99bf8831c71b)
+![itinerary6](https://github.com/user-attachments/assets/8cf31ac9-b394-4638-9ee5-24f6d870b262)
+![itinerary7](https://github.com/user-attachments/assets/62cc301b-79d2-4aac-a18e-7b044940e667)
 
 
 ## Contact Us
@@ -129,4 +139,8 @@ For any inquiries or feedback, please contact
 vigneshlakshmanababu@gmail.com, 
 vigneshhariraj@gmail.com, 
 shailesh.ashok2020@gmail.com
+
+
+https://www.linkedin.com/in/voyageverse/
+voyageverse.cerebrox@gmail.com
 
