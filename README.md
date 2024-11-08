@@ -51,7 +51,7 @@ To get started with **Voyage Verse**:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/Cerebro-X_Voyage-Verse_oneAPI_hack_kpr.git
+    git clone https://github.com/yourusername/voyageverse.git
     ```
 
 2. Navigate to the project directory:
@@ -82,13 +82,7 @@ To get started with **Voyage Verse**:
   - ![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 
 - **AI & Language Models**:  
-  - ![Hugging Face](https://img.shields.io/badge/Hugging%20Face-%23FFD700.svg?style=for-the-badge&logo=huggingface&logoColor=white) Hugging Face Transformers Library for natural language generation.
-  
-
-- **APIs**:  
-  - ![Foursquare](https://img.shields.io/badge/Foursquare-%23F94877.svg?style=for-the-badge&logo=foursquare&logoColor=white)
-  - ![OpenCage](https://img.shields.io/badge/OpenCage-%23A0C3D2.svg?style=for-the-badge&logo=opencage&logoColor=white)
-  - OpenWeather API for weather data, Google Maps API for dynamic navigation.
+  - ![Gemini](https://img.shields.io/badge/Gemini-%23336E7B.svg?style=for-the-badge&logo=google&logoColor=white) Gemini model for natural language generation.
 
 ---
 
